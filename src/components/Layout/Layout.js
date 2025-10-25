@@ -31,6 +31,7 @@ import UserListPage from "../../pages/users/UserListPage";
 import AddProduct from "../../pages/Products/AddProduct";
 import ViewProduct from "../../pages/Products/ViewProduct";
 import AddAdjustment from "../../pages/Products/AddAdjustment";
+import ViewAdjustment from "../../pages/Products/ViewAdjustment";
 
 function Layout(props) {
   var classes = useStyles();
@@ -60,6 +61,7 @@ function Layout(props) {
               <Route path="/app/AddProduct" component={AddProduct} />
               <Route path="/app/ProductList" component={ViewProduct} />
               <Route path="/app/AddAdjustment" component={AddAdjustment} />
+              <Route path="/app/ViewdAdjustment" component={ViewAdjustment} />
               <Route
                 exact
                 path="/app/ui"
