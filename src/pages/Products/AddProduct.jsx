@@ -1,5 +1,7 @@
 import { Card } from "@material-ui/core";
 import React, { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export default function AddProduct() {
   const [formData, setFormData] = useState({
@@ -20,6 +22,8 @@ export default function AddProduct() {
     warehouses: [{ warehouse: "", quantity: "" }],
   });
 
+  const [value, setValue] = useState("");
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -35,7 +39,6 @@ export default function AddProduct() {
       [name]: files[0],
     }));
   };
-
   const handleSubmit = () => {
     console.log("Form Data:", formData);
     alert("Product added successfully!");
@@ -288,21 +291,29 @@ export default function AddProduct() {
               </select>
             </div>
 
-            {/* Product Details */}
             <div className="col-12">
               <label className="form-label fw-semibold">Product Details</label>
-              <textarea
-                name="productDetails"
-                value={formData.productDetails}
-                onChange={handleInputChange}
-                className="form-control"
-                placeholder="Enter product details"
-                rows="4"
+              <ReactQuill
+                theme="snow"
+                value={value}
+                onChange={setValue}
+                placeholder="Write product details here..."
+                style={{ height: "240px", backgroundColor: "white" }}
+                modules={{
+                  toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ["bold", "italic", "underline", "strike"],
+                    [{ list: "ordered" }, { list: "bullet" }],
+                    [{ color: [] }, { background: [] }],
+                    ["link", "image", "code-block"],
+                    ["clean"],
+                  ],
+                }}
               />
             </div>
 
             {/* Upload Image */}
-            <div className="col-md-6">
+            <div className="col-md-6 mt-4 pt-4">
               <label className="form-label fw-semibold">
                 Product Image <span className="text-danger">*</span>
               </label>

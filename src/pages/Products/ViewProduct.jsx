@@ -1,101 +1,67 @@
 import React from "react";
-import { Card } from "@material-ui/core";
+import { Card, IconButton } from "@material-ui/core";
+import { Edit, Delete } from "@material-ui/icons";
 import MUIDataTable from "mui-datatables";
 
 export default function ViewProduct() {
-  // Dummy data for demonstration
+ 
   const dummyData = [
     {
-      category: "Electronics",
+      id: 1,
+      image:
+        "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=100",
       name: "Laptop Dell Inspiron",
-      maker: "Dell Inc.",
-      warehouse: "Jammu Warehouse",
-      capacity: "256GB SSD",
-      quantity: "50",
-      units: "Pieces",
-      dateAdded: "2024-01-15",
-      image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=100",
+      code: "DELL-001",
+      brand: "Dell",
+      category: "Electronics",
+      type: "Laptop",
+      quantity: 50,
+      unit: "Pieces",
+      price: 60000,
+      cost: 55000,
+      status: "Active",
     },
     {
-      category: "Electronics",
+      id: 2,
+      image:
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=100",
       name: "Mobile Samsung Galaxy",
-      maker: "Samsung",
-      warehouse: "Delhi Warehouse",
-      capacity: "128GB",
-      quantity: "100",
-      units: "Pieces",
-      dateAdded: "2024-02-20",
-      image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=100",
+      code: "SAM-002",
+      brand: "Samsung",
+      category: "Electronics",
+      type: "Mobile",
+      quantity: 100,
+      unit: "Pieces",
+      price: 25000,
+      cost: 22000,
+      status: "Active",
     },
     {
-      category: "Furniture",
+      id: 3,
+      image:
+        "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=100",
       name: "Office Chair Executive",
-      maker: "Godrej",
-      warehouse: "Mumbai Warehouse",
-      capacity: "150kg",
-      quantity: "75",
-      units: "Pieces",
-      dateAdded: "2024-03-10",
-      image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=100",
-    },
-    {
-      category: "Stationery",
-      name: "A4 Paper Ream",
-      maker: "JK Paper",
-      warehouse: "Bangalore Warehouse",
-      capacity: "500 Sheets",
-      quantity: "200",
-      units: "Boxes",
-      dateAdded: "2024-01-25",
-      image: "https://images.unsplash.com/photo-1587033411391-5d9e51cce126?w=100",
-    },
-    {
-      category: "Electronics",
-      name: "Printer HP LaserJet",
-      maker: "HP Inc.",
-      warehouse: "Jammu Warehouse",
-      capacity: "20 ppm",
-      quantity: "30",
-      units: "Pieces",
-      dateAdded: "2024-02-15",
-      image: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=100",
-    },
-    {
-      category: "Beverages",
-      name: "Water Bottle Pack",
-      maker: "Bisleri",
-      warehouse: "Delhi Warehouse",
-      capacity: "1 Liter",
-      quantity: "500",
-      units: "Pieces",
-      dateAdded: "2024-03-01",
-      image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?w=100",
-    },
-    {
-      category: "Office Supplies",
-      name: "Whiteboard Marker Set",
-      maker: "Camlin",
-      warehouse: "Mumbai Warehouse",
-      capacity: "Pack of 10",
-      quantity: "150",
-      units: "Boxes",
-      dateAdded: "2024-01-30",
-      image: "https://images.unsplash.com/photo-1611532736570-c8bb83f8bb4e?w=100",
-    },
-    {
-      category: "Electronics",
-      name: "Wireless Mouse Logitech",
-      maker: "Logitech",
-      warehouse: "Bangalore Warehouse",
-      capacity: "2.4GHz",
-      quantity: "120",
-      units: "Pieces",
-      dateAdded: "2024-02-28",
-      image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=100",
+      code: "GOD-003",
+      brand: "Godrej",
+      category: "Furniture",
+      type: "Chair",
+      quantity: 75,
+      unit: "Pieces",
+      price: 4500,
+      cost: 4000,
+      status: "Inactive",
     },
   ];
 
+  // Define columns
   const columns = [
+    {
+      name: "no",
+      label: "No",
+      options: {
+        customBodyRenderLite: (dataIndex) => dataIndex + 1,
+      },
+    },
     {
       name: "image",
       label: "Image",
@@ -105,10 +71,10 @@ export default function ViewProduct() {
             src={value}
             alt="Product"
             style={{
-              width: "60px",
-              height: "60px",
+              width: "55px",
+              height: "55px",
               objectFit: "cover",
-              borderRadius: "4px",
+              borderRadius: "6px",
             }}
           />
         ),
@@ -116,62 +82,81 @@ export default function ViewProduct() {
         sort: false,
       },
     },
+    { name: "name", label: "Name" },
+    { name: "code", label: "Code" },
+    { name: "brand", label: "Brand" },
+    { name: "category", label: "Category" },
+    { name: "type", label: "Type" },
+    { name: "quantity", label: "Quantity" },
+    { name: "unit", label: "Unit" },
     {
-      name: "category",
-      label: "Category",
+      name: "price",
+      label: "Price (₹)",
+      options: {
+        customBodyRender: (value) => `₹${value.toLocaleString()}`,
+      },
     },
     {
-      name: "name",
-      label: "Product Name",
+      name: "cost",
+      label: "Cost (₹)",
+      options: {
+        customBodyRender: (value) => `₹${value.toLocaleString()}`,
+      },
     },
     {
-      name: "maker",
-      label: "Maker",
+      name: "status",
+      label: "Product Status",
+      options: {
+        customBodyRender: (value) => (
+          <span
+            style={{
+              color: value === "Active" ? "green" : "red",
+              fontWeight: 600,
+            }}
+          >
+            {value}
+          </span>
+        ),
+      },
     },
     {
-      name: "warehouse",
-      label: "Warehouse",
-    },
-    {
-      name: "capacity",
-      label: "Capacity",
-    },
-    {
-      name: "quantity",
-      label: "Quantity",
-    },
-    {
-      name: "units",
-      label: "Units",
-    },
-    {
-      name: "dateAdded",
-      label: "Date Added",
+      name: "actions",
+      label: "Action",
+      options: {
+        customBodyRenderLite: (dataIndex) => (
+          <div style={{ display: "flex", gap: "8px" }}>
+            <IconButton
+              color="primary"
+              size="small"
+              onClick={() => alert(`Edit ID: ${dummyData[dataIndex].id}`)}
+            >
+              <Edit fontSize="small" />
+            </IconButton>
+            <IconButton
+              color="secondary"
+              size="small"
+              onClick={() => alert(`Delete ID: ${dummyData[dataIndex].id}`)}
+            >
+              <Delete fontSize="small" />
+            </IconButton>
+          </div>
+        ),
+        filter: false,
+        sort: false,
+      },
     },
   ];
-
-  const tableData = dummyData.map((d) => [
-    d.image,
-    d.category,
-    d.name,
-    d.maker,
-    d.warehouse,
-    d.capacity,
-    d.quantity,
-    d.units,
-    d.dateAdded,
-  ]);
 
   return (
     <Card container>
       <div>
         <div style={{ backgroundColor: "#eeeeeeff" }}>
-          <h4 className="text-dark fs-5 p-3">ALL Product List</h4>
+          <h4 className="text-dark fs-5 p-3 mb-0">ALL Product List</h4>
         </div>
+
         <MUIDataTable
-          className="mt-0 pt-0"
           title="Product Details"
-          data={tableData}
+          data={dummyData}
           columns={columns}
           options={{
             filterType: "checkbox",
@@ -182,6 +167,7 @@ export default function ViewProduct() {
             viewColumns: true,
             filter: true,
             search: true,
+            rowsPerPage: 5,
           }}
         />
       </div>

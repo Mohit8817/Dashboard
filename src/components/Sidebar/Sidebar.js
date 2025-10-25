@@ -10,7 +10,8 @@ import {
   LibraryBooks as LibraryIcon,
   HelpOutline as FAQIcon,
   ArrowBack as ArrowBackIcon,
-Person as PersonIcon, 
+  CollectionsBookmark as CollectionsBookmarkIcon,
+  Person as PersonIcon,
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -57,33 +58,35 @@ const structure = [
     ],
   },
 
-    { id: 15, type: "Form",
-      link: "/app/Form",
+  {
+    id: 15,
+    type: "Form",
+    link: "/app/Form",
     icon: <TypographyIcon />,
-     label: "Forms" },
+    label: "Forms",
+  },
 
-       {
+  {
     id: 16,
     type: "User",
-        icon: <PersonIcon/>,
+    icon: <PersonIcon />,
     label: "User",
-       children: [
+    children: [
       { label: "Add User", link: "/app/AddUser" },
       { label: "View User", link: "/app/Userlist" },
     ],
   },
 
-   {
+  {
     id: 17,
     type: "Product",
-        icon: <PersonIcon/>,
+    icon: <CollectionsBookmarkIcon />,
     label: "Product",
-       children: [
+    children: [
       { label: "Add Product", link: "/app/AddProduct" },
       { label: "Product List", link: "/app/ProductList" },
     ],
   },
-
 
   { id: 5, type: "divider" },
   { id: 6, type: "title", label: "HELP" },
@@ -110,8 +113,6 @@ const structure = [
     link: "",
     icon: <Dot size="large" color="secondary" />,
   },
-
-  
 ];
 
 function Sidebar({ location }) {
@@ -125,7 +126,7 @@ function Sidebar({ location }) {
   // local
   var [isPermanent, setPermanent] = useState(true);
 
-  useEffect(function() {
+  useEffect(function () {
     window.addEventListener("resize", handleWindowWidthChange);
     handleWindowWidthChange();
     return function cleanup() {
@@ -159,7 +160,7 @@ function Sidebar({ location }) {
         </IconButton>
       </div>
       <List className={classes.sidebarList}>
-        {structure.map(link => (
+        {structure.map((link) => (
           <SidebarLink
             key={link.id}
             location={location}
