@@ -30,6 +30,7 @@ import AddUserPage from "../../pages/users/AddUserPage";
 import UserListPage from "../../pages/users/UserListPage";
 import AddProduct from "../../pages/Products/AddProduct";
 import ViewProduct from "../../pages/Products/ViewProduct";
+import AddAdjustment from "../../pages/Products/AddAdjustment";
 
 function Layout(props) {
   var classes = useStyles();
@@ -58,6 +59,7 @@ function Layout(props) {
               <Route path="/app/Userlist" component={UserListPage} />
               <Route path="/app/AddProduct" component={AddProduct} />
               <Route path="/app/ProductList" component={ViewProduct} />
+              <Route path="/app/AddAdjustment" component={AddAdjustment} />
               <Route
                 exact
                 path="/app/ui"

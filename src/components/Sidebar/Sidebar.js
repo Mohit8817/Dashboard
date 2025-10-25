@@ -85,7 +85,7 @@ const structure = [
     children: [
       { label: "Add Product", link: "/app/AddProduct" },
       { label: "Product List", link: "/app/ProductList" },
-      { label: "Add Adjustment", link: "/app/Adjustment" },
+      { label: "Add Adjustment", link: "/app/AddAdjustment" },
     ],
   },
 
