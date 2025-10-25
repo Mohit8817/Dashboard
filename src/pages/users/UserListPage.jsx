@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, } from "@material-ui/core";
+import { Card } from "@material-ui/core";
 import MUIDataTable from "mui-datatables";
 
 export default function EmployeeListTable() {
@@ -192,11 +192,11 @@ export default function EmployeeListTable() {
 
       <div>
         <div style={{ backgroundColor: "#eeeeeeff" }}>
-        <h4 className="text-dark fs-5 p-3">ALL User List </h4>
-          </div>
+          <h4 className="text-dark fs-5 p-3">ALL User List </h4>
+        </div>
         <MUIDataTable
-        className="mt-0 pt-0"
-            title="Employee Details"
+          className="mt-0 pt-0"
+          title="Employee Details"
           data={tableData}
           columns={columns}
           options={{

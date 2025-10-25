@@ -1,28 +1,23 @@
-// import React from 'react'
-
-// const AddProduct = () => {
-//   return (
-//     <div>
-
-//     </div>
-//   )
-// }
-
-// export default AddProduct
-
 import { Card } from "@material-ui/core";
 import React, { useState } from "react";
 
 export default function AddProduct() {
   const [formData, setFormData] = useState({
-    category: "",
     name: "",
-    maker: "",
-    warehouse: "",
-    capacity: "",
-    quantity: "",
-    units: "",
+    productType: "",
+    productCode: "",
+    brand: "",
+    category: "",
+    productUnit: "",
+    productPrice: "",
+    alertQuantity: "",
+    productTax: "",
+    taxMethod: "",
+    productDetails: "",
     productImage: null,
+    initialStock: "",
+    productVariant: "No",
+    warehouses: [{ warehouse: "", quantity: "" }],
   });
 
   const handleInputChange = (e) => {
@@ -48,15 +43,46 @@ export default function AddProduct() {
 
   const handleCancel = () => {
     setFormData({
-      category: "",
       name: "",
-      maker: "",
-      warehouse: "",
-      capacity: "",
-      quantity: "",
-      units: "",
+      productType: "",
+      productCode: "",
+      brand: "",
+      category: "",
+      productUnit: "",
+      productPrice: "",
+      alertQuantity: "",
+      productTax: "",
+      taxMethod: "",
+      productDetails: "",
       productImage: null,
+      initialStock: "",
+      productVariant: "No",
+      warehouses: [{ warehouse: "", quantity: "" }],
     });
+  };
+
+  const handleWarehouseChange = (index, field, value) => {
+    const updatedWarehouses = [...formData.warehouses];
+    updatedWarehouses[index][field] = value;
+    setFormData((prev) => ({
+      ...prev,
+      warehouses: updatedWarehouses,
+    }));
+  };
+
+  const addWarehouse = () => {
+    setFormData((prev) => ({
+      ...prev,
+      warehouses: [...prev.warehouses, { warehouse: "", quantity: "" }],
+    }));
+  };
+
+  const removeWarehouse = (index) => {
+    const updatedWarehouses = formData.warehouses.filter((_, i) => i !== index);
+    setFormData((prev) => ({
+      ...prev,
+      warehouses: updatedWarehouses,
+    }));
   };
 
   return (
@@ -74,25 +100,10 @@ export default function AddProduct() {
           {/* Product Detail Section */}
           <h5 className="fw-semibold mb-3 mt-4">Product Detail</h5>
           <div className="row g-3">
-            {/* Category */}
+            {/* Product Name */}
             <div className="col-md-4">
               <label className="form-label fw-semibold">
-                Category <span className="text-danger">*</span>
-              </label>
-              <input
-                type="text"
-                name="category"
-                value={formData.category}
-                onChange={handleInputChange}
-                className="form-control"
-                placeholder="Enter category"
-              />
-            </div>
-
-            {/* Name */}
-            <div className="col-md-4">
-              <label className="form-label fw-semibold">
-                Name <span className="text-danger">*</span>
+                Product Name <span className="text-danger">*</span>
               </label>
               <input
                 type="text"
@@ -104,95 +115,196 @@ export default function AddProduct() {
               />
             </div>
 
-            {/* Maker */}
+            {/* Product Type */}
             <div className="col-md-4">
               <label className="form-label fw-semibold">
-                Maker <span className="text-danger">*</span>
-              </label>
-              <input
-                type="text"
-                name="maker"
-                value={formData.maker}
-                onChange={handleInputChange}
-                className="form-control"
-                placeholder="Enter maker name"
-              />
-            </div>
-
-            {/* Warehouse */}
-            <div className="col-md-4">
-              <label className="form-label fw-semibold">
-                Warehouse <span className="text-danger">*</span>
+                Product Type <span className="text-danger">*</span>
               </label>
               <select
-                name="warehouse"
-                value={formData.warehouse}
+                name="productType"
+                value={formData.productType}
                 onChange={handleInputChange}
                 className="form-select"
               >
-                <option value="">-- Select Warehouse --</option>
-                <option value="Jammu Warehouse">Jammu Warehouse</option>
-                <option value="Delhi Warehouse">Delhi Warehouse</option>
-                <option value="Mumbai Warehouse">Mumbai Warehouse</option>
-                <option value="Bangalore Warehouse">Bangalore Warehouse</option>
+                <option value="">Select...</option>
+                <option value="type1">type1</option>
+                <option value="type2">type2</option>
               </select>
             </div>
 
-            {/* Capacity */}
+            {/* Product Code */}
             <div className="col-md-4">
               <label className="form-label fw-semibold">
-                Capacity <span className="text-danger">*</span>
+                Product Code <span className="text-danger">*</span>
               </label>
               <input
                 type="text"
-                name="capacity"
-                value={formData.capacity}
+                name="productCode"
+                value={formData.productCode}
                 onChange={handleInputChange}
                 className="form-control"
-                placeholder="Enter capacity"
+                placeholder="Enter product code"
               />
             </div>
 
-            {/* Quantity */}
+            {/* Brand */}
+            <div className="col-md-4">
+              <label className="form-label fw-semibold">Brand</label>
+              <select
+                name="brand"
+                value={formData.brand}
+                onChange={handleInputChange}
+                className="form-select"
+              >
+                <option value="">Select...</option>
+                <option value="brand1">brand1</option>
+                <option value="brand2">brand2</option>
+              </select>
+            </div>
+
+            {/* Category */}
             <div className="col-md-4">
               <label className="form-label fw-semibold">
-                Quantity <span className="text-danger">*</span>
+                Category <span className="text-danger">*</span>
+              </label>
+              <select
+                name="category"
+                value={formData.category}
+                onChange={handleInputChange}
+                className="form-select"
+              >
+                <option value="">Select...</option>
+                <option value="category1">category1</option>
+                <option value="category2">category2</option>
+                <option value="PANEL">PANEL</option>
+              </select>
+            </div>
+
+            {/* Product Unit */}
+            <div className="col-md-4">
+              <label className="form-label fw-semibold">
+                Product Unit <span className="text-danger">*</span>
+              </label>
+              <select
+                name="productUnit"
+                value={formData.productUnit}
+                onChange={handleInputChange}
+                className="form-select"
+              >
+                <option value="">Select...</option>
+                <option value="number">number</option>
+                <option value="meter">meter</option>
+                <option value="kilogram">kilogram</option>
+              </select>
+            </div>
+
+            {/* Product Price */}
+            <div className="col-md-4">
+              <label className="form-label fw-semibold">
+                Product Price <span className="text-danger">*</span>
               </label>
               <input
                 type="number"
-                name="quantity"
-                value={formData.quantity}
+                name="productPrice"
+                value={formData.productPrice}
                 onChange={handleInputChange}
                 className="form-control"
-                placeholder="Enter quantity"
+                placeholder="Enter product price"
+                min="0"
+                step="0.01"
+              />
+            </div>
+
+            {/* Alert Quantity */}
+            <div className="col-md-4">
+              <label className="form-label fw-semibold">Alert Quantity</label>
+              <input
+                type="number"
+                name="alertQuantity"
+                value={formData.alertQuantity}
+                onChange={handleInputChange}
+                className="form-control"
+                placeholder="Enter alert quantity"
                 min="0"
               />
             </div>
 
-            {/* Units */}
-            <div className="col-md-6">
-              <label className="form-label fw-semibold">
-                Units <span className="text-danger">*</span>
-              </label>
+            {/* Product Tax */}
+            <div className="col-md-4">
+              <label className="form-label fw-semibold">Product Tax</label>
               <select
-                name="units"
-                value={formData.units}
+                name="productTax"
+                value={formData.productTax}
                 onChange={handleInputChange}
                 className="form-select"
               >
-                <option value="">-- Select Unit --</option>
-                <option value="Pieces">Pieces</option>
-                <option value="Kg">Kg</option>
-                <option value="Liters">Liters</option>
-                <option value="Boxes">Boxes</option>
-                <option value="Meters">Meters</option>
+                <option value="">Select...</option>
+                <option value="gst@15">gst@15</option>
+                <option value="gst@18">gst@18</option>
               </select>
+            </div>
+
+            {/* Tax Method */}
+            <div className="col-md-4">
+              <label className="form-label fw-semibold">Tax Method</label>
+              <select
+                name="taxMethod"
+                value={formData.taxMethod}
+                onChange={handleInputChange}
+                className="form-select"
+              >
+                <option value="">Select...</option>
+                <option value="Exclusive">Exclusive</option>
+                <option value="Inclusive">Inclusive</option>
+              </select>
+            </div>
+
+            {/* Initial Stock */}
+            <div className="col-md-4">
+              <label className="form-label fw-semibold">Initial Stock</label>
+              <select
+                name="initialStock"
+                value={formData.initialStock}
+                onChange={handleInputChange}
+                className="form-select"
+              >
+                <option value="">Select...</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+              </select>
+            </div>
+
+            {/* Product Variant */}
+            <div className="col-md-4">
+              <label className="form-label fw-semibold">Product Variant</label>
+              <select
+                name="productVariant"
+                value={formData.productVariant}
+                onChange={handleInputChange}
+                className="form-select"
+              >
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+            </div>
+
+            {/* Product Details */}
+            <div className="col-12">
+              <label className="form-label fw-semibold">Product Details</label>
+              <textarea
+                name="productDetails"
+                value={formData.productDetails}
+                onChange={handleInputChange}
+                className="form-control"
+                placeholder="Enter product details"
+                rows="4"
+              />
             </div>
 
             {/* Upload Image */}
             <div className="col-md-6">
               <label className="form-label fw-semibold">
-                Upload Image <span className="text-danger">*</span>
+                Product Image <span className="text-danger">*</span>
               </label>
               <input
                 type="file"
@@ -203,6 +315,58 @@ export default function AddProduct() {
               />
             </div>
           </div>
+
+          {/* Warehouse Section */}
+          <h5 className="fw-semibold mb-3 mt-4">Warehouse</h5>
+          {formData.warehouses.map((wh, index) => (
+            <div key={index} className="row g-3 mb-3 align-items-end">
+              <div className="col-md-5">
+                <label className="form-label fw-semibold">Warehouse</label>
+                <select
+                  value={wh.warehouse}
+                  onChange={(e) =>
+                    handleWarehouseChange(index, "warehouse", e.target.value)
+                  }
+                  className="form-select"
+                >
+                  <option value="">Select...</option>
+                  <option value="warehouse 1">warehouse 1</option>
+                  <option value="warehouse 2">warehouse 2</option>
+                </select>
+              </div>
+              <div className="col-md-5">
+                <label className="form-label fw-semibold">Quantity</label>
+                <input
+                  type="number"
+                  value={wh.quantity}
+                  onChange={(e) =>
+                    handleWarehouseChange(index, "quantity", e.target.value)
+                  }
+                  className="form-control"
+                  placeholder="Enter quantity"
+                  min="0"
+                />
+              </div>
+              <div className="col-md-2">
+                {formData.warehouses.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => removeWarehouse(index)}
+                    className="btn btn-danger w-100"
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={addWarehouse}
+            className="btn btn-primary mb-3"
+          >
+            Add Warehouse
+          </button>
         </div>
 
         {/* Footer */}
