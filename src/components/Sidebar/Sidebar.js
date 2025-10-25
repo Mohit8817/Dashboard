@@ -81,10 +81,11 @@ const structure = [
     id: 17,
     type: "Product",
     icon: <CollectionsBookmarkIcon />,
-    label: "Product",
+    label: "Products",
     children: [
       { label: "Add Product", link: "/app/AddProduct" },
       { label: "Product List", link: "/app/ProductList" },
+      { label: "Add Adjustment", link: "/app/Adjustment" },
     ],
   },
 

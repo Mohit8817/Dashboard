@@ -4,7 +4,6 @@ import { Edit, Delete } from "@material-ui/icons";
 import MUIDataTable from "mui-datatables";
 
 export default function ViewProduct() {
- 
   const dummyData = [
     {
       id: 1,
