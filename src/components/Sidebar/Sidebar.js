@@ -12,7 +12,8 @@ import {
   ArrowBack as ArrowBackIcon,
   CollectionsBookmark as CollectionsBookmarkIcon,
   Person as PersonIcon,
- LocalShipping as TrolleyIcon,
+  LocalShipping as TrolleyIcon,
+  ShoppingCartOutlined as ShoppingCartOutlinedIcon,
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -91,7 +92,7 @@ const structure = [
     ],
   },
 
-    {
+  {
     id: 18,
     type: "Dispatch",
     icon: <TrolleyIcon />,
@@ -100,6 +101,17 @@ const structure = [
       { label: "Add Dispatch", link: "/app/AddDispatch" },
       { label: "View Dispatch", link: "/app/ViewDispatch" },
       { label: "Filter Dispatch", link: "/app/FilterDispatch" },
+    ],
+  },
+
+  {
+    id: 19,
+    type: "Request",
+    icon: <ShoppingCartOutlinedIcon />,
+    label: "Request",
+    children: [
+      { label: "Add Request", link: "/app/AddRequest" },
+      { label: "View Request", link: "/app/ViewRequest" },
     ],
   },
 
