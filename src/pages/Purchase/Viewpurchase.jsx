@@ -71,7 +71,7 @@ export default function ViewPurchase() {
       label: "Document",
       options: {
         customBodyRender: (value) => (
-          <Link            
+          <Link
             style={{
               textDecoration: "none",
               color: "#007bff",
@@ -161,7 +161,9 @@ export default function ViewPurchase() {
             <IconButton
               color="primary"
               size="small"
-              onClick={() => alert(`Edit Purchase ID: ${dummyData[dataIndex].id}`)}
+              onClick={() =>
+                alert(`Edit Purchase ID: ${dummyData[dataIndex].id}`)
+              }
             >
               <Edit fontSize="small" />
             </IconButton>
