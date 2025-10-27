@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/styles";
+// import bgImage from "../../images/solarimg.jpg";
 
-export default makeStyles(theme => ({
+export default makeStyles((theme) => ({
   container: {
     height: "100vh",
     width: "100vw",
@@ -12,26 +13,24 @@ export default makeStyles(theme => ({
     left: 0,
   },
   logotypeContainer: {
-    backgroundColor: theme.palette.primary.main,
-    width: "60%",
+    // backgroundImage: `url(${bgImage})`,
+    backgroundColor: "#d8d8e0",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    width: "50%",
     height: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    [theme.breakpoints.down("md")]: {
-      width: "50%",
-    },
-    [theme.breakpoints.down("md")]: {
-      display: "none",
-    },
   },
   logotypeImage: {
-    width: 165,
+    width: 140,
     marginBottom: theme.spacing(4),
   },
   logotypeText: {
-    color: "white",
+    color: "black",
     fontWeight: 500,
     fontSize: 84,
     [theme.breakpoints.down("md")]: {
@@ -39,7 +38,7 @@ export default makeStyles(theme => ({
     },
   },
   formContainer: {
-    width: "40%",
+    width: "50%",
     height: "100%",
     display: "flex",
     flexDirection: "column",

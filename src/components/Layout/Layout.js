@@ -32,6 +32,9 @@ import ViewAdjustment from "../../pages/Products/ViewAdjustment";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
+import AddDispatch from "../../pages/Dispatch/AddDispatch";
+import ViewDispatch from "../../pages/Dispatch/ViewDispatch";
+import ProductDispatch from "../../pages/Dispatch/ProductDispatch";
 
 function Layout(props) {
   var classes = useStyles();
@@ -63,6 +66,9 @@ function Layout(props) {
               <Route path="/app/ProductList" component={ViewProduct} />
               <Route path="/app/AddAdjustment" component={AddAdjustment} />
               <Route path="/app/ViewdAdjustment" component={ViewAdjustment} />
+              <Route path="/app/AddDispatch" component={AddDispatch} />
+              <Route path="/app/ViewDispatch" component={ViewDispatch} />
+              <Route path="/app/FilterDispatch" component={ProductDispatch} />
               <Route
                 exact
                 path="/app/ui"
