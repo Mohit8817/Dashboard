@@ -15,6 +15,7 @@ import {
   LocalShipping as TrolleyIcon,
   ShoppingCartOutlined as ShoppingCartOutlinedIcon,
   ReceiptOutlined as ReceiptOutlinedIcon,
+  CreditCard as CreditCardIcon,
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -123,6 +124,18 @@ const structure = [
     children: [
       { label: "Add Purchase", link: "/app/AddPurchase" },
       { label: "View Purchase", link: "/app/ViewPurchase" },
+    ],
+  },
+
+
+    {
+    id: 21,
+    type: "Expense",
+    icon: <CreditCardIcon/>,
+    label: "Expense",
+    children: [
+      { label: "Add Expense", link: "/app/AddExpenseCategory"},
+      { label: "View Expense", link: "/app/ViewExpenses" },
     ],
   },
 

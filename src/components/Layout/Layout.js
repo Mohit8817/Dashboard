@@ -34,6 +34,8 @@ import AddProductRequest from "../../pages/RequestDetails/AddProductRequest";
 import ViewRequest from "../../pages/RequestDetails/ViewRequest";
 import AddPurchase from "../../pages/Purchase/AddPurchase";
 import Viewpurchase from "../../pages/Purchase/Viewpurchase";
+import ExpenseCategory from "../../pages/Expense/ExpenseCategory";
+import ViewExpense from "../../pages/Expense/ViewExpense";
 
 function Layout(props) {
   var classes = useStyles();
@@ -72,6 +74,8 @@ function Layout(props) {
             <Route path="/app/ViewRequest" component={ViewRequest} />
             <Route path="/app/AddPurchase" component={AddPurchase} />
             <Route path="/app/ViewPurchase" component={Viewpurchase} />
+            <Route path="/app/AddExpenseCategory" component={ExpenseCategory} />
+            <Route path="/app/ViewExpenses" component={ViewExpense} />
             <Route
               exact
               path="/app/ui"
