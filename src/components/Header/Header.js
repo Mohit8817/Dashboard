@@ -27,6 +27,8 @@ import { Badge, Typography } from "../Wrappers/Wrappers";
 import Notification from "../Notification/Notification";
 import UserAvatar from "../UserAvatar/UserAvatar";
 
+import logoimg from '../../images/KLK SVG Logo.svg'
+
 // context
 import {
   useLayoutState,
@@ -34,6 +36,7 @@ import {
   toggleSidebar,
 } from "../../context/LayoutContext";
 import { useUserDispatch, signOut } from "../../context/UserContext";
+// import Image from './../../../node_modules/quill/formats/image';
 
 const messages = [
   {
@@ -136,7 +139,12 @@ export default function Header(props) {
           )}
         </IconButton>
         <Typography variant="h6" weight="medium" className={classes.logotype}>
-          KLK Ventures Pvt Ltd.
+            <img
+        src={logoimg}
+        alt="KLK Ventures Logo"
+        style={{ height: "50px", width: "100px", objectFit: "contain" }}
+      /> 
+      KLK ventures Pvt Ltd
         </Typography>
         <div className={classes.grow} />
         <div

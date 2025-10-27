@@ -23,15 +23,15 @@ import Maps from "../../pages/maps";
 import Tables from "../../pages/tables";
 import Icons from "../../pages/icons";
 import Charts from "../../pages/charts";
-
-// context
-import { useLayoutState } from "../../context/LayoutContext";
 import AddUserPage from "../../pages/users/AddUserPage";
 import UserListPage from "../../pages/users/UserListPage";
 import AddProduct from "../../pages/Products/AddProduct";
 import ViewProduct from "../../pages/Products/ViewProduct";
 import AddAdjustment from "../../pages/Products/AddAdjustment";
 import ViewAdjustment from "../../pages/Products/ViewAdjustment";
+
+// context
+import { useLayoutState } from "../../context/LayoutContext";
 
 function Layout(props) {
   var classes = useStyles();
