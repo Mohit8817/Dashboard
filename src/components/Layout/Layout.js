@@ -49,6 +49,7 @@ function Layout(props) {
               [classes.contentShift]: layoutState.isSidebarOpened,
             })}
           >
+          {/* pages */}
             <div className={classes.fakeToolbar} />
             <Switch>
               <Route path="/app/dashboard" component={Dashboard} />
