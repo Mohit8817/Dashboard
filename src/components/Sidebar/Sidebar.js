@@ -14,6 +14,7 @@ import {
   Person as PersonIcon,
   LocalShipping as TrolleyIcon,
   ShoppingCartOutlined as ShoppingCartOutlinedIcon,
+  ReceiptOutlined  as ReceiptOutlinedIcon,
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -112,6 +113,16 @@ const structure = [
     children: [
       { label: "Add Request", link: "/app/AddRequest" },
       { label: "View Request", link: "/app/ViewRequest" },
+    ],
+  },
+  {
+    id: 20,
+    type: "Purchase",
+    icon: <ReceiptOutlinedIcon />,
+    label: "Purchase",
+    children: [
+      { label: "Add Purchase", link: "/app/AddPurchase" },
+      { label: "View Purchase", link: "/app/ViewPurchase" },
     ],
   },
 

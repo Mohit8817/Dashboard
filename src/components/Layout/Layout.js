@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Route,
-  Switch,
-  Redirect,
-  withRouter,
-} from "react-router-dom";
+import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import classnames from "classnames";
 
 // styles
@@ -37,6 +32,8 @@ import ViewDispatch from "../../pages/Dispatch/ViewDispatch";
 import ProductDispatch from "../../pages/Dispatch/ProductDispatch";
 import AddProductRequest from "../../pages/RequestDetails/AddProductRequest";
 import ViewRequest from "../../pages/RequestDetails/ViewRequest";
+import AddPurchase from "../../pages/Purchase/AddPurchase";
+import Viewpurchase from "../../pages/Purchase/Viewpurchase";
 
 function Layout(props) {
   var classes = useStyles();
@@ -46,44 +43,46 @@ function Layout(props) {
 
   return (
     <div className={classes.root}>
-        <>
-          <Header history={props.history} />
-          <Sidebar />
-          <div
-            className={classnames(classes.content, {
-              [classes.contentShift]: layoutState.isSidebarOpened,
-            })}
-          >
+      <>
+        <Header history={props.history} />
+        <Sidebar />
+        <div
+          className={classnames(classes.content, {
+            [classes.contentShift]: layoutState.isSidebarOpened,
+          })}
+        >
           {/* pages */}
-            <div className={classes.fakeToolbar} />
-            <Switch>
-              <Route path="/app/dashboard" component={Dashboard} />
-              <Route path="/app/typography" component={Typography} />
-              <Route path="/app/tables" component={Tables} />
-              <Route path="/app/notifications" component={Notifications} />
-              <Route path="/app/Form" component={Form} />
-              <Route path="/app/AddUser" component={AddUserPage} />
-              <Route path="/app/Userlist" component={UserListPage} />
-              <Route path="/app/AddProduct" component={AddProduct} />
-              <Route path="/app/ProductList" component={ViewProduct} />
-              <Route path="/app/AddAdjustment" component={AddAdjustment} />
-              <Route path="/app/ViewdAdjustment" component={ViewAdjustment} />
-              <Route path="/app/AddDispatch" component={AddDispatch} />
-              <Route path="/app/ViewDispatch" component={ViewDispatch} />
-              <Route path="/app/FilterDispatch" component={ProductDispatch} />
-              <Route path="/app/AddRequest" component={AddProductRequest} />
-              <Route path="/app/ViewRequest" component={ViewRequest} />
-              <Route
-                exact
-                path="/app/ui"
-                render={() => <Redirect to="/app/ui/icons" />}
-              />
-              <Route path="/app/ui/maps" component={Maps} />
-              <Route path="/app/ui/icons" component={Icons} />
-              <Route path="/app/ui/charts" component={Charts} />
-            </Switch>
-          </div>
-        </>
+          <div className={classes.fakeToolbar} />
+          <Switch>
+            <Route path="/app/dashboard" component={Dashboard} />
+            <Route path="/app/typography" component={Typography} />
+            <Route path="/app/tables" component={Tables} />
+            <Route path="/app/notifications" component={Notifications} />
+            <Route path="/app/Form" component={Form} />
+            <Route path="/app/AddUser" component={AddUserPage} />
+            <Route path="/app/Userlist" component={UserListPage} />
+            <Route path="/app/AddProduct" component={AddProduct} />
+            <Route path="/app/ProductList" component={ViewProduct} />
+            <Route path="/app/AddAdjustment" component={AddAdjustment} />
+            <Route path="/app/ViewdAdjustment" component={ViewAdjustment} />
+            <Route path="/app/AddDispatch" component={AddDispatch} />
+            <Route path="/app/ViewDispatch" component={ViewDispatch} />
+            <Route path="/app/FilterDispatch" component={ProductDispatch} />
+            <Route path="/app/AddRequest" component={AddProductRequest} />
+            <Route path="/app/ViewRequest" component={ViewRequest} />
+            <Route path="/app/AddPurchase" component={AddPurchase} />
+            <Route path="/app/ViewPurchase" component={Viewpurchase} />
+            <Route
+              exact
+              path="/app/ui"
+              render={() => <Redirect to="/app/ui/icons" />}
+            />
+            <Route path="/app/ui/maps" component={Maps} />
+            <Route path="/app/ui/icons" component={Icons} />
+            <Route path="/app/ui/charts" component={Charts} />
+          </Switch>
+        </div>
+      </>
     </div>
   );
 }

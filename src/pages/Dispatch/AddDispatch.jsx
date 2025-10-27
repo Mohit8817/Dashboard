@@ -82,7 +82,7 @@ export default function AddDispatch() {
         },
       ],
     }));
-  };
+  };    
 
   // Remove an order row
   const removeOrderRow = (index) => {
@@ -132,19 +132,19 @@ export default function AddDispatch() {
   // Calculate totals
   const totalQuantity = formData.orderList.reduce(
     (sum, item) => sum + parseFloat(item.quantity || 0),
-    0
+    0,
   );
   const totalPrice = formData.orderList.reduce(
     (sum, item) => sum + parseFloat(item.price || 0),
-    0
+    0,
   );
   const totalTax = formData.orderList.reduce(
     (sum, item) => sum + parseFloat(item.tax || 0),
-    0
+    0,
   );
   const totalSubTotal = formData.orderList.reduce(
     (sum, item) => sum + parseFloat(item.subTotal || 0),
-    0
+    0,
   );
 
   return (
@@ -157,7 +157,8 @@ export default function AddDispatch() {
 
         <div className="p-3">
           <p>
-            The fields marked with <span className="text-danger">*</span> are required.
+            The fields marked with <span className="text-danger">*</span> are
+            required.
           </p>
 
           {/* Basic Fields */}
@@ -330,7 +331,11 @@ export default function AddDispatch() {
                       <select
                         value={item.productType}
                         onChange={(e) =>
-                          handleOrderChange(index, "productType", e.target.value)
+                          handleOrderChange(
+                            index,
+                            "productType",
+                            e.target.value,
+                          )
                         }
                         className="form-select"
                       >
@@ -344,7 +349,11 @@ export default function AddDispatch() {
                       <select
                         value={item.productName}
                         onChange={(e) =>
-                          handleOrderChange(index, "productName", e.target.value)
+                          handleOrderChange(
+                            index,
+                            "productName",
+                            e.target.value,
+                          )
                         }
                         className="form-select"
                       >
@@ -358,7 +367,11 @@ export default function AddDispatch() {
                       <select
                         value={item.productVariant}
                         onChange={(e) =>
-                          handleOrderChange(index, "productVariant", e.target.value)
+                          handleOrderChange(
+                            index,
+                            "productVariant",
+                            e.target.value,
+                          )
                         }
                         className="form-select"
                       >
@@ -387,7 +400,11 @@ export default function AddDispatch() {
                         type="number"
                         value={item.availableQty}
                         onChange={(e) =>
-                          handleOrderChange(index, "availableQty", e.target.value)
+                          handleOrderChange(
+                            index,
+                            "availableQty",
+                            e.target.value,
+                          )
                         }
                         className="form-control"
                       />
@@ -451,7 +468,9 @@ export default function AddDispatch() {
               </tbody>
               <tfoot>
                 <tr>
-                  <th colSpan="5" className="text-end">TOTAL</th>
+                  <th colSpan="5" className="text-end">
+                    TOTAL
+                  </th>
                   <th>{totalQuantity}</th>
                   <th>{totalPrice.toFixed(2)}</th>
                   <th>{totalTax.toFixed(2)}</th>
@@ -490,7 +509,10 @@ export default function AddDispatch() {
             <button onClick={handleSubmit} className="btn btn-success px-4">
               Submit Form
             </button>
-            <button onClick={handleCancel} className="btn btn-outline-primary px-4">
+            <button
+              onClick={handleCancel}
+              className="btn btn-outline-primary px-4"
+            >
               Cancel
             </button>
           </div>
