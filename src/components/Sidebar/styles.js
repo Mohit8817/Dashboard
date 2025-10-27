@@ -41,19 +41,25 @@ export default makeStyles(theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(0),
   },
-  /* sidebarList: {
-    marginTop: theme.spacing(6),
-  }, */
+   sidebarList: {
+    marginTop: theme.spacing(0),
+    paddingTop:  theme.spacing(0),
+  }, 
+
+
+
   mobileBackButton: {
-    marginTop: theme.spacing(0.5),
+    marginTop: theme.spacing(0.4),
     marginLeft: theme.spacing(3),
     [theme.breakpoints.only("sm")]: {
-      marginTop: theme.spacing(0.625),
+      marginTop: theme.spacing(0.600),
     },
     [theme.breakpoints.up("md")]: {
       display: "none",
     },
   },
 }));
+
+

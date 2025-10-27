@@ -14,7 +14,7 @@ import {
   Person as PersonIcon,
   LocalShipping as TrolleyIcon,
   ShoppingCartOutlined as ShoppingCartOutlinedIcon,
-  ReceiptOutlined  as ReceiptOutlinedIcon,
+  ReceiptOutlined as ReceiptOutlinedIcon,
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -199,7 +199,7 @@ function Sidebar({ location }) {
       </div>
       <List className={classes.sidebarList}>
         {structure.map((link) => (
-          <SidebarLink
+          <SidebarLink      
             key={link.id}
             location={location}
             isSidebarOpened={isSidebarOpened}
