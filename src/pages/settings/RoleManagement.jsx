@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 import { Edit, Delete, Security } from "@material-ui/icons";
 import MUIDataTable from "mui-datatables";
-import PermissionManagement from "./PermissionManagement"; // import here
+import PermissionManagement from "./PermissionManagement"; 
 
 const RoleManagement = () => {
   const [open, setOpen] = useState(false);

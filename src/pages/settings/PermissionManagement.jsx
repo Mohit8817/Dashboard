@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   Button,
+  Card,
   Checkbox,
   Container,
   FormControlLabel,
@@ -11,6 +12,8 @@ import {
   TableHead,
   TableRow,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@material-ui/core";
 
 const PermissionManagement = ({ selectedRole, onClose }) => {
@@ -23,6 +26,9 @@ const PermissionManagement = ({ selectedRole, onClose }) => {
     Employee: { view: false, add: false, edit: false, delete: false, approval: false },
     Settings: { view: false, add: false, edit: false, delete: false, approval: false },
   });
+
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleCheckboxChange = (module, field) => {
     setPermissions((prev) => ({
@@ -41,69 +47,101 @@ const PermissionManagement = ({ selectedRole, onClose }) => {
   };
 
   return (
-    <div
-      className="bg-white rounded shadow p-4"
+    <Card
+      elevation={4}
       style={{
-        width: "950px",
+        width: isSmallScreen ? "95%" : "90%",
+        maxWidth: isSmallScreen ? "95%" : "950px",
         position: "absolute",
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
         maxHeight: "90vh",
         overflowY: "auto",
+        padding: isSmallScreen ? "16px" : "24px",
+        borderRadius: "12px",
       }}
     >
-      <Typography variant="h6" gutterBottom>
-        {selectedRole ? selectedRole.name : ""} - Permission Management
+      <Typography variant="h6" gutterBottom align="center">
+        {selectedRole ? selectedRole.name : "Role"} - Permission Management
       </Typography>
-      <Container component={Paper}>
-        <Table>
-          <TableHead style={{ background: "#f5f5f5" }}>
-            <TableRow>
-              <TableCell>Module Name</TableCell>
-              <TableCell>All</TableCell>
-              <TableCell align="center">View</TableCell>
-              <TableCell align="center">Add</TableCell>
-              <TableCell align="center">Edit</TableCell>
-              <TableCell align="center">Delete</TableCell>
-              <TableCell align="center">Approval</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {Object.keys(permissions).map((module) => (
-              <TableRow key={module}>
-                <TableCell>
-                  <Typography style={{ fontWeight: 500 }}>{module}</Typography>
+
+      <Container component={Paper} style={{ padding: 0 }}>
+        <div style={{ overflowX: "auto" }}>
+          <Table size={isSmallScreen ? "small" : "medium"}>
+            <TableHead style={{ background: "#f5f5f5" }}>
+              <TableRow>
+                <TableCell style={{ fontWeight: 600 }}>Module Name</TableCell>
+                <TableCell style={{ fontWeight: 600 }}>All</TableCell>
+                <TableCell align="center" style={{ fontWeight: 600 }}>
+                  View
                 </TableCell>
-                <TableCell>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={Object.values(permissions[module]).every((v) => v)}
-                        onChange={() => handleSelectAll(module)}
-                        color="primary"
-                      />
-                    }
-                    label="All"
-                  />
+                <TableCell align="center" style={{ fontWeight: 600 }}>
+                  Add
                 </TableCell>
-                {["view", "add", "edit", "delete", "approval"].map((perm) => (
-                  <TableCell key={perm} align="center">
-                    <Checkbox
-                      checked={permissions[module][perm]}
-                      onChange={() => handleCheckboxChange(module, perm)}
-                      color="primary"
+                <TableCell align="center" style={{ fontWeight: 600 }}>
+                  Edit
+                </TableCell>
+                <TableCell align="center" style={{ fontWeight: 600 }}>
+                  Delete
+                </TableCell>
+                <TableCell align="center" style={{ fontWeight: 600 }}>
+                  Approval
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {Object.keys(permissions).map((module) => (
+                <TableRow key={module}>
+                  <TableCell>
+                    <Typography style={{ fontWeight: 500 }}>{module}</Typography>
+                  </TableCell>
+                  <TableCell>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={Object.values(permissions[module]).every((v) => v)}
+                          onChange={() => handleSelectAll(module)}
+                          color="primary"
+                          size={isSmallScreen ? "small" : "medium"}
+                        />
+                      }
+                      label="All"
                     />
                   </TableCell>
-                ))}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+                  {["view", "add", "edit", "delete", "approval"].map((perm) => (
+                    <TableCell key={perm} align="center">
+                      <Checkbox
+                        checked={permissions[module][perm]}
+                        onChange={() => handleCheckboxChange(module, perm)}
+                        color="primary"
+                        size={isSmallScreen ? "small" : "medium"}
+                      />
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </Container>
 
-      <div className="d-flex justify-content-end gap-2 mt-4">
-        <Button variant="outlined" color="primary" onClick={onClose}>
+      {/* Buttons */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          gap: "10px",
+          marginTop: "20px",
+          flexWrap: "wrap",
+        }}
+      >
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={onClose}
+          fullWidth={isSmallScreen}
+        >
           Close
         </Button>
         <Button
@@ -113,11 +151,12 @@ const PermissionManagement = ({ selectedRole, onClose }) => {
             alert("Permissions saved successfully!");
             onClose();
           }}
+          fullWidth={isSmallScreen}
         >
           Save
         </Button>
       </div>
-    </div>
+    </Card>
   );
 };
 
