@@ -36,6 +36,8 @@ import AddPurchase from "../../pages/Purchase/AddPurchase";
 import Viewpurchase from "../../pages/Purchase/Viewpurchase";
 import ExpenseCategory from "../../pages/Expense/ExpenseCategory";
 import ViewExpense from "../../pages/Expense/ViewExpense";
+import PermissionManagement from "../../pages/settings/PermissionManagement";
+import RoleManagement from "../../pages/settings/RoleManagement";
 
 function Layout(props) {
   var classes = useStyles();
@@ -76,6 +78,8 @@ function Layout(props) {
             <Route path="/app/ViewPurchase" component={Viewpurchase} />
             <Route path="/app/AddExpenseCategory" component={ExpenseCategory} />
             <Route path="/app/ViewExpenses" component={ViewExpense} />
+            <Route path="/app/PermissionManagement" component={PermissionManagement} />
+            <Route path="/app/RoleManagement" component={RoleManagement} />
             <Route
               exact
               path="/app/ui"

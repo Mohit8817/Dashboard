@@ -16,6 +16,7 @@ import {
   ShoppingCartOutlined as ShoppingCartOutlinedIcon,
   ReceiptOutlined as ReceiptOutlinedIcon,
   CreditCard as CreditCardIcon,
+  Settings as SettingsIcon,
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -127,15 +128,25 @@ const structure = [
     ],
   },
 
-
-    {
+  {
     id: 21,
     type: "Expense",
-    icon: <CreditCardIcon/>,
+    icon: <CreditCardIcon />,
     label: "Expense",
     children: [
-      { label: "Add Expense", link: "/app/AddExpenseCategory"},
+      { label: "Add Expense", link: "/app/AddExpenseCategory" },
       { label: "View Expense", link: "/app/ViewExpenses" },
+    ],
+  },
+
+  {
+    id: 22,
+    type: "Settings",
+    icon: <SettingsIcon />,
+    label: "Settings",
+    children: [
+      { label: "Role Management", link: "/app/RoleManagement" },
+      { label: "Permission Management", link: "/app/PermissionManagement" },
     ],
   },
 
@@ -212,7 +223,7 @@ function Sidebar({ location }) {
       </div>
       <List className={classes.sidebarList}>
         {structure.map((link) => (
-          <SidebarLink      
+          <SidebarLink
             key={link.id}
             location={location}
             isSidebarOpened={isSidebarOpened}
