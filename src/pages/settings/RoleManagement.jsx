@@ -18,7 +18,7 @@ const RoleManagement = () => {
   const [description, setDescription] = useState("");
   const [roles, setRoles] = useState([
     { name: "Admin", description: "Full access" },
-    { name: "HR", description: "Employee management" },
+    { name: "Testing Admin", description: "Employee management" },
   ]);
   const [editIndex, setEditIndex] = useState(null);
 
