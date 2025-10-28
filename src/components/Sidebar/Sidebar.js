@@ -146,7 +146,7 @@ const structure = [
     label: "Settings",
     children: [
       { label: "Role Management", link: "/app/RoleManagement" },
-      { label: "Permission Management", link: "/app/PermissionManagement" },
+      // { label: "Permission Management", link: "/app/PermissionManagement" },
     ],
   },
 
