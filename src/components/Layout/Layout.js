@@ -38,6 +38,7 @@ import ExpenseCategory from "../../pages/Expense/ExpenseCategory";
 import ViewExpense from "../../pages/Expense/ViewExpense";
 import PermissionManagement from "../../pages/settings/PermissionManagement";
 import RoleManagement from "../../pages/settings/RoleManagement";
+import Newdashboard from "../../pages/Newdashboard/Newdashboard";
 
 function Layout(props) {
   var classes = useStyles();
@@ -80,9 +81,10 @@ function Layout(props) {
             <Route path="/app/ViewExpenses" component={ViewExpense} />
             <Route path="/app/PermissionManagement" component={PermissionManagement} />
             <Route path="/app/RoleManagement" component={RoleManagement} />
+            <Route path="/app/NewDashboard" component={Newdashboard} />
             <Route
               exact
-              path="/app/ui"
+              path="/app/ui"  
               render={() => <Redirect to="/app/ui/icons" />}
             />
             <Route path="/app/ui/maps" component={Maps} />

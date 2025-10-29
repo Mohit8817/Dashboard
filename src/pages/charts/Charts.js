@@ -127,6 +127,7 @@ export default function Charts(props) {
             </ResponsiveContainer>
           </Widget>
         </Grid>
+        
         <Grid item xs={12} md={4}>
           <Widget title="Pie Chart with Tooltips" noBodyPadding upperTitle>
             <ResponsiveContainer width="100%" height={300}>

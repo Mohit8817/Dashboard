@@ -292,6 +292,8 @@ export default function Dashboard(props) {
             </Grid>
           </Widget>
         </Grid>
+
+
         <Grid item xs={12}>
           <Widget
             bodyClass={classes.mainChartBody}
@@ -392,11 +394,14 @@ export default function Dashboard(props) {
             </ResponsiveContainer>
           </Widget>
         </Grid>
+
         {mock.bigStat.map((stat) => (
           <Grid item md={4} sm={6} xs={12} key={stat.product}>
             <BigStat {...stat} />
           </Grid>
         ))}
+
+
         <Grid item xs={12}>
           <Widget
             title="Support Requests"
@@ -407,6 +412,9 @@ export default function Dashboard(props) {
             <Table data={mock.table} />
           </Widget>
         </Grid>
+
+
+        
       </Grid>
     </>
   );

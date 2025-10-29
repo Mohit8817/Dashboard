@@ -17,6 +17,7 @@ import {
   ReceiptOutlined as ReceiptOutlinedIcon,
   CreditCard as CreditCardIcon,
   Settings as SettingsIcon,
+  
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -144,11 +145,19 @@ const structure = [
     type: "Settings",
     icon: <SettingsIcon />,
     label: "Settings",
-    children: [
-      { label: "Role Management", link: "/app/RoleManagement" },
-      // { label: "Permission Management", link: "/app/PermissionManagement" },
-    ],
+    children: [{ label: "Role Management", link: "/app/RoleManagement" }],
   },
+
+
+    {
+    id: 23,
+    type: "New Dashboard",
+    icon: <HomeIcon />,
+    label: "New Dashboard",  
+    link: "/app/NewDashboard",
+  },
+
+
 
   { id: 5, type: "divider" },
   { id: 6, type: "title", label: "HELP" },
