@@ -12,8 +12,7 @@ const Newdashboard = () => {
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Key performance metrics compared to previous month
-        </Typography>
-        
+        </Typography>        
       </Box>
 
      <DashboardCards/>
