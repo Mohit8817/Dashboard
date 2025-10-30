@@ -293,6 +293,7 @@ export default function Dashboard(props) {
           </Widget>
         </Grid>
 
+        {/* line chart  */}
 
         <Grid item xs={12}>
           <Widget
@@ -401,7 +402,6 @@ export default function Dashboard(props) {
           </Grid>
         ))}
 
-
         <Grid item xs={12}>
           <Widget
             title="Support Requests"
@@ -412,9 +412,6 @@ export default function Dashboard(props) {
             <Table data={mock.table} />
           </Widget>
         </Grid>
-
-
-        
       </Grid>
     </>
   );
