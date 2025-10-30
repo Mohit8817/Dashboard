@@ -1,10 +1,11 @@
 import React from "react";
-import { Container, Typography, Box } from "@material-ui/core";
+import {  Typography, Box, Grid } from "@material-ui/core";
 import DashboardCards from "./Statscard/StatCard";
+import CleanLineChart from "./Linechart/Linechart";
 
 const Newdashboard = () => {
   return (
-    <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
+    <Grid sx={{ mt: 4, mb: 4 }}>
       {/* Page Title */}
              <Box mb={3}>
         <Typography variant="h4" sx={{ fontWeight: 700 }}>
@@ -16,7 +17,8 @@ const Newdashboard = () => {
       </Box>
 
      <DashboardCards/>
-    </Container>
+     <CleanLineChart/>
+    </Grid>
   );
 };
 
