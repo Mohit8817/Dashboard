@@ -20,6 +20,8 @@ const Newdashboard = () => {
       <DashboardCards />
       <CleanLineChart />
       <Barchart />
+
+      table 
     </Grid>
   );
 };
