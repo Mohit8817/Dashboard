@@ -39,6 +39,7 @@ import ViewExpense from "../../pages/Expense/ViewExpense";
 import PermissionManagement from "../../pages/settings/PermissionManagement";
 import RoleManagement from "../../pages/settings/RoleManagement";
 import Newdashboard from "../../pages/Newdashboard/Newdashboard";
+import ModernLogin from "../../pages/login/Newlogin";
 
 function Layout(props) {
   var classes = useStyles();
@@ -82,6 +83,7 @@ function Layout(props) {
             <Route path="/app/PermissionManagement" component={PermissionManagement} />
             <Route path="/app/RoleManagement" component={RoleManagement} />
             <Route path="/app/NewDashboard" component={Newdashboard} />
+            <Route path="/app/Newlogin" component={ModernLogin} />
             <Route
               exact
               path="/app/ui"  

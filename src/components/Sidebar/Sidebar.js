@@ -158,6 +158,15 @@ const structure = [
   },
 
 
+    {
+    id: 24,
+    type: "New Dashboard",
+    icon: <HomeIcon />,
+    label: "New Login",  
+    link: "/app/Newlogin",
+  },
+
+
 
   { id: 5, type: "divider" },
   { id: 6, type: "title", label: "HELP" },
